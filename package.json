@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./src && eslint ./src/**/*.jsx && stylelint ./src/**/*.scss",
-    "start": "parcel src/index.pug",
+    "start": "parcel src/index.pug --port 5678",
     "build": "parcel build src/index.pug"
   },
   "repository": {
