@@ -1,3 +1,0 @@
-const applicationContext = {};
-
-export { applicationContext };

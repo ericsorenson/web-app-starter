@@ -4,7 +4,7 @@
   "description": "Starting point for a single page app with Cerebral and React",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest .*test\\.js$",
     "lint": "eslint ./src && eslint ./src/**/*.jsx && stylelint ./src/**/*.scss",
     "start": "parcel src/index.pug --port 5678",
     "build": "parcel build src/index.pug"
@@ -36,6 +36,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-sort-keys-fix": "^1.0.1",
+    "jest": "^24.5.0",
     "parcel-bundler": "^1.12.3",
     "prettier": "^1.16.4",
     "pug": "^2.0.3",
@@ -44,6 +45,7 @@
     "sass": "^1.17.3",
     "stylelint": "^9.10.1",
     "stylelint-config-idiomatic-order": "^6.2.0",
-    "stylelint-config-standard": "^18.2.0"
+    "stylelint-config-standard": "^18.2.0",
+    "uuid": "^3.3.2"
   }
 }
