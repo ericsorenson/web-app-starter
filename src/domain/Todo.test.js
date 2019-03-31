@@ -1,6 +1,6 @@
 const assert = require('assert');
 
-const Todo = require('./Todo');
+const { Todo } = require('./Todo');
 
 describe('Todo', () => {
     describe('new', () => {

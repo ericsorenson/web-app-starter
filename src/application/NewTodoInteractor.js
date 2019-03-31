@@ -1,6 +1,6 @@
 const { toJSON } = require('../utilities/ObjectUtils');
 const { validateRequest } = require('./InteractorUtils');
-const Todo = require('../domain/Todo');
+const { Todo } = require('../domain/Todo');
 
 /**
  *

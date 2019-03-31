@@ -13,4 +13,4 @@ function Todo({ rawTodo, applicationContext }) {
     });
 }
 
-module.exports = Todo;
+module.exports = { Todo };
