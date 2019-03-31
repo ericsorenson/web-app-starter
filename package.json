@@ -4,7 +4,13 @@
   "description": "Starting point for a single page app with Cerebral and React",
   "main": "index.js",
   "scripts": {
+    "debug": "node --inspect-brk node_modules/.bin/jest --runInBand .*test\\.js$",
     "test": "jest .*test\\.js$",
+    "test:watch": "jest --watch .*test\\.js$",
+    "test:unit": "jest --config jest-unit.config.js ./src/.*test\\.js$",
+    "test:e2e": "jest --config jest-e2e.config.js ./e2e/.*test\\.js$",
+    "test:pa11y": "pa11y-ci --config pa11y-ci.config.json",
+    "test:all": "npm run lint && npm run test && npm run test:pa11y && npm run cypress",
     "lint": "eslint ./src && eslint ./src/**/*.jsx && stylelint ./src/**/*.scss",
     "start": "parcel src/index.pug --port 5678",
     "build": "parcel build src/index.pug"

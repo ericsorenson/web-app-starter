@@ -1,14 +1,15 @@
 let todos = [];
-const readTodos = function () {
-  return todos;
+const readAllTodos = function(applicationContext) {
+    return todos;
 };
 
-const deleteTodos = function () {
-  todos = []
+const deleteAllTodos = function(applicationContext) {
+    todos = [];
 };
 
-const createTodo = function (todo) {
-  todos.push(todo)
+const createTodo = function({ todoData, applicationContext }) {
+    console.log("creating record: " + JSON.stringify(todoData));
+    todos.push(todoData);
 };
 
-module.exports = {readTodos, deleteTodos, createTodo};
+module.exports = { readAllTodos, deleteAllTodos, createTodo };

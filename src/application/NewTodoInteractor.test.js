@@ -1,3 +1,4 @@
+const assert = require('assert');
 const { newTodo } = require('./NewTodoInteractor');
 
 describe('new valid Todo', () => {
@@ -8,14 +9,16 @@ describe('new valid Todo', () => {
             },
         };
 
+        const testCallback = (response) => {
+            assert.ok(response);
+        }
+
         const brandNewTodo = await newTodo({
-            rawTodo: {
-                description: 'Make a samminch.',
-            },
-            mockApplicationContext,
-            function(response) {
-                console.log(response);
-            },
+            requestData: {
+                description: 'Make a sammich.',
+            }, 
+            responseCallback: testCallback,
+            applicationContext: mockApplicationContext,
         });
     });
 });

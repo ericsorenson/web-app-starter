@@ -12,8 +12,8 @@ describe('Todo', () => {
 
         it('Creates a Todo object', () => {
             const todo = new Todo({
-                description: 'Do me.',
-            }, mockApplicationContext);
+                rawTodo: { description: 'Do me.', }, applicationContext: mockApplicationContext
+            });
             assert.equal(todo.description, 'Do me.');
         });
     });
