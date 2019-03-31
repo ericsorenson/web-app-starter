@@ -1,6 +1,6 @@
 const { toJSON } = require('../utilities/ObjectUtils');
 const { validateRequest } = require('./InteractorUtils');
-const { Todo } = require('../domain/Todo');
+const Todo = require('../domain/Todo');
 
 /**
  *
@@ -32,10 +32,10 @@ exports.newTodo = async ({
 
     console.log(todoData);
 
-    /*await applicationContext.getPersistenceGateway().createTodo({
+    applicationContext.getPersistenceGateway().createTodo({
         todoData,
         applicationContext
-    });*/
+    });
 
     responseCallback({ status: "success" });
 };
