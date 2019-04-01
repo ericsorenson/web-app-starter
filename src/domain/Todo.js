@@ -6,10 +6,9 @@
  */
 
 function Todo({ rawTodo, applicationContext }) {
-    this.description = "default";
     Object.assign(this, rawTodo, {
-        createdAt: rawTodo.createdAt || new Date().toISOString(),
-        messageId: rawTodo.todoId || applicationContext.getUniqueId(),
+        createdAt: rawTodo.createdAt || applicationContext.getCurrentTimestamp(),
+        todoId: rawTodo.todoId || applicationContext.getUniqueIdString(),
     });
 }
 

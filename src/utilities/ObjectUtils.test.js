@@ -21,7 +21,6 @@ describe('ObjectUtils', () => {
         name: 'MockEntity2',
         optionalThing: validNested,
       });
-      console.log(toJSON(obj));
     });
   });
 });

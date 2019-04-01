@@ -8,7 +8,6 @@ const deleteAllTodos = function(applicationContext) {
 };
 
 const createTodo = function({ todoData, applicationContext }) {
-    console.log("creating record: " + JSON.stringify(todoData));
     todos.push(todoData);
 };
 
