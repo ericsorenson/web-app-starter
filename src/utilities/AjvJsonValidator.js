@@ -2,12 +2,13 @@
 *
 * @param object
 */
-function validate(data, schema) {
+function validateJson(data, schema) {
     var Ajv = require('ajv');
-    var ajv = new Ajv({ allErrors: true, jsonPointers: true, verbose: false, messages: false }); // options can be passed, e.g. {allErrors: true}
+    var ajv = new Ajv({ allErrors: true, jsonPointers: true, verbose: false, messages: false });
+    require('ajv-errors')(ajv);
     var validate = ajv.compile(schema);
     var valid = validate(data);
-    if (!valid) console.log(validate.errors);
+    if (!valid) return validate.errors;
 }
 
-module.exports = { validate };
+module.exports = { validateJson };

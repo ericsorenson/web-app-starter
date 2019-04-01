@@ -11,7 +11,7 @@ function createMockApplicationContext(options) {
             return 1554070560001;
         },
         getJsonValidator: () => ({
-            validate: (_data, _schema) => { },
+            validateJson: (_data, _schema) => { },
         }),
         getPersistenceGateway: () => ({
             createTodo: (_request) => { },

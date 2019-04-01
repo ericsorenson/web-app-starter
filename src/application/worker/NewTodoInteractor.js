@@ -18,12 +18,13 @@ exports.newTodo = async ({
     // An interactor owns the interface of the request. It will validate that the requestData is 
     // well-formed using a JSON Schema validator. Detailed validation is handled by entities later.
     const requestDataSchema = {
-        "type": "object",
-        "properties": {
-            "description": { "type": "string" }
+        type: "object",
+        properties: {
+            description: { type: "string" }
         },
-        "required": ["description"],
-        "additionalProperties": false
+        required: ["description"],
+        additionalProperties: false,
+        errorMessage: "should be an object with a string property 'description' only"
     };
 
     // An interactor validates that the required objects are present.

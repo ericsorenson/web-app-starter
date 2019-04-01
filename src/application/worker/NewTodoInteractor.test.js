@@ -3,8 +3,96 @@ const { createMockApplicationContext } = require('../../utilities/TestUtils');
 const { newTodo } = require('./NewTodoInteractor');
 
 describe('new valid Todo', () => {
+        it('should reject requests without requestData', async () => {
+        const mockApplicationContext = createMockApplicationContext({})
+        const testResponseCallback = (_response) => { }
+        try {
+            await newTodo({
+                responseCallback: testResponseCallback,
+                applicationContext: mockApplicationContext,
+            });
+        } catch (e) {
+            assert.strictEqual(e.message, 'Hey programmer - at least one of your interactor request parameters is shit.');
+        };
+    });
+
+    it('should reject requests without responseCallback', async () => {
+        const mockApplicationContext = createMockApplicationContext({})
+        const testResponseCallback = (_response) => { }
+        try {
+            await newTodo({
+                requestData: {
+                    description: 'Make a sammich.',
+                },
+                applicationContext: mockApplicationContext,
+            });
+        } catch (e) {
+            assert.strictEqual(e.message, 'Hey programmer - at least one of your interactor request parameters is shit.');
+        };
+    });
+
+    it('should reject requests without applicationContext', async () => {
+        const mockApplicationContext = createMockApplicationContext({})
+        const testResponseCallback = (_response) => { }
+        try {
+            await newTodo({
+                requestData: {
+                    description: 'Make a sammich.',
+                },
+                responseCallback: testResponseCallback,
+            });
+        } catch (e) {
+            assert.strictEqual(e.message, 'Hey programmer - at least one of your interactor request parameters is shit.');
+        };
+    });
+
+    it('should reject requests with missing description in the requestData', async () => {
+        const { validateJson } = require('../../utilities/AjvJsonValidator');
+        const mockApplicationContext = createMockApplicationContext({
+            getJsonValidator: () => {
+                return {
+                    validateJson,
+                };
+            },
+        })
+        const testResponseCallback = (_response) => { }
+        try {
+            await newTodo({
+                requestData: {
+                },
+                responseCallback: testResponseCallback,
+                applicationContext: mockApplicationContext,
+            });
+        } catch (e) {
+            assert.ok(e.message.includes("should be an object with a string property 'description' only"));
+        };
+    });
+
+    it('should accept well formed and complete requests', async () => {
+        const { validateJson } = require('../../utilities/AjvJsonValidator');
+        const mockApplicationContext = createMockApplicationContext({
+            getJsonValidator: () => {
+                return {
+                    validateJson,
+                };
+            },
+        })
+        const testResponseCallback = (_response) => { }
+        try {
+            await newTodo({
+                requestData: {
+                    description: 'Make a sammich.',
+                },
+                responseCallback: testResponseCallback,
+                applicationContext: mockApplicationContext,
+            });
+        } catch (e) {
+            assert.fail("should not have thrown an exception");
+        };
+    });
+
     it('should invoke persistence with the same application context and the correct Todo record', async () => {
-        let mockApplicationContext = createMockApplicationContext({
+        const mockApplicationContext = createMockApplicationContext({
             getUniqueIdString: () => {
                 return '413f62ce-d7c8-446e-aeda-14a2a625a626';
             },
@@ -25,7 +113,7 @@ describe('new valid Todo', () => {
 
         const testResponseCallback = (response) => { }
 
-        const brandNewTodo = await newTodo({
+        await newTodo({
             requestData: {
                 description: 'Make a sammich.',
             },
@@ -35,7 +123,7 @@ describe('new valid Todo', () => {
     });
 
     it('should invoke response callback with a success code and new todo data', async () => {
-        let mockApplicationContext = createMockApplicationContext({
+        const mockApplicationContext = createMockApplicationContext({
             getUniqueIdString: () => {
                 return '413f62ce-d7c8-446e-aeda-14a2a625a626';
             },
@@ -56,7 +144,7 @@ describe('new valid Todo', () => {
             });
         }
 
-        const brandNewTodo = await newTodo({
+        await newTodo({
             requestData: {
                 description: 'Make a sammich.',
             },

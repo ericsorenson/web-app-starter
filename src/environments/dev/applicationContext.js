@@ -1,5 +1,5 @@
 const uuidv4 = require('uuid/v4');
-const { validate } = require('../utilities/AjvJsonValidator');
+const { validateJson } = require('../utilities/AjvJsonValidator');
 const { readAllTodos, deleteAllTodos, createTodo } = require('../../persistence/InMemoryPersistenceGateway');
 
 const applicationContext = {
@@ -11,7 +11,7 @@ const applicationContext = {
     },
     getJsonValidator: () => {
         return {
-            validate,
+            validateJson,
         };
     },
     getPersistenceGateway: () => {
