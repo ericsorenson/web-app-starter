@@ -6,6 +6,7 @@ function validateRequest({ requestData, requestDataSchema, responseCallback, app
     if (!requestData || !requestDataSchema || !responseCallback || !applicationContext) {
         throw new Error("Hey programmer - at least one of your interactor request parameters is shit.")
     }
+    applicationContext.getJsonValidator().validate(requestData, requestDataSchema);
 }
 
 exports.validateRequest = validateRequest;

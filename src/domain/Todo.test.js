@@ -17,7 +17,6 @@ describe('Todo', () => {
                 rawTodo: { description: 'Do me.', }, applicationContext: mockApplicationContext
             });
             assert.ok(todo);
-            console.log(todo);
         });
     });
 });

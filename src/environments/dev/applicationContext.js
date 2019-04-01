@@ -1,9 +1,18 @@
-import uuidv4 from 'uuid/v4';
+const uuidv4 = require('uuid/v4');
+const { validate } = require('../utilities/AjvJsonValidator');
 const { readAllTodos, deleteAllTodos, createTodo } = require('../../persistence/InMemoryPersistenceGateway');
 
 const applicationContext = {
-    getUniqueId: () => {
+    getUniqueIdString: () => {
         return uuidv4();
+    },
+    getCurrentTimestamp: () => {
+        return Date.now();
+    },
+    getJsonValidator: () => {
+        return {
+            validate,
+        };
     },
     getPersistenceGateway: () => {
         return {
