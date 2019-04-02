@@ -1,5 +1,5 @@
 const { toJSON } = require('../../utilities/ObjectUtils');
-const { validateRequest } = require('../InteractorUtils');
+const { validateRequestData } = require('../InteractorUtils');
 const { Todo } = require('../../domain/Todo');
 
 /**
@@ -28,7 +28,7 @@ exports.newTodo = async ({
     };
 
     // An interactor validates that the required objects are present.
-    validateRequest({ requestData, requestDataSchema, responseCallback, applicationContext });
+    validateRequestData({ requestData, requestDataSchema, applicationContext });
 
     // An interactor knows the data strucures of the entities it mediates and assembles
     // those datastructures as approptiate. It doesn't blindly pass them what it receives from its caller.

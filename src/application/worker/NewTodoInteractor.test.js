@@ -3,48 +3,6 @@ const { createMockApplicationContext } = require('../../utilities/TestUtils');
 const { newTodo } = require('./NewTodoInteractor');
 
 describe('new valid Todo', () => {
-        it('should reject requests without requestData', async () => {
-        const mockApplicationContext = createMockApplicationContext({})
-        const testResponseCallback = (_response) => { }
-        try {
-            await newTodo({
-                responseCallback: testResponseCallback,
-                applicationContext: mockApplicationContext,
-            });
-        } catch (e) {
-            assert.strictEqual(e.message, 'Hey programmer - at least one of your interactor request parameters is shit.');
-        };
-    });
-
-    it('should reject requests without responseCallback', async () => {
-        const mockApplicationContext = createMockApplicationContext({})
-        const testResponseCallback = (_response) => { }
-        try {
-            await newTodo({
-                requestData: {
-                    description: 'Make a sammich.',
-                },
-                applicationContext: mockApplicationContext,
-            });
-        } catch (e) {
-            assert.strictEqual(e.message, 'Hey programmer - at least one of your interactor request parameters is shit.');
-        };
-    });
-
-    it('should reject requests without applicationContext', async () => {
-        const mockApplicationContext = createMockApplicationContext({})
-        const testResponseCallback = (_response) => { }
-        try {
-            await newTodo({
-                requestData: {
-                    description: 'Make a sammich.',
-                },
-                responseCallback: testResponseCallback,
-            });
-        } catch (e) {
-            assert.strictEqual(e.message, 'Hey programmer - at least one of your interactor request parameters is shit.');
-        };
-    });
 
     it('should reject requests with missing description in the requestData', async () => {
         const { validateJson } = require('../../utilities/AjvJsonValidator');
