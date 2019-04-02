@@ -45,6 +45,7 @@ describe('new valid Todo', () => {
                 applicationContext: mockApplicationContext,
             });
         } catch (e) {
+            console.log(JSON.stringify(e.message));
             assert.fail("should not have thrown an exception");
         };
     });

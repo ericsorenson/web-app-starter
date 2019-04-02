@@ -1,6 +1,6 @@
 const { toJSON } = require('../../utilities/ObjectUtils');
-const { validateRequestData } = require('../InteractorUtils');
-const { Todo } = require('../../domain/Todo');
+const { validateRequestData } = require('../../utilities/CleanUtils');
+const { NewTodo } = require('../../domain/worker/NewTodo');
 
 /**
  *
@@ -17,7 +17,7 @@ exports.newTodo = async ({
 
     // An interactor owns the interface of the request. It will validate that the requestData is 
     // well-formed using a JSON Schema validator. Detailed validation is handled by entities later.
-    const requestDataSchema = {
+    const dataSchema = {
         type: "object",
         properties: {
             description: { type: "string" }
@@ -28,7 +28,7 @@ exports.newTodo = async ({
     };
 
     // An interactor validates that the required objects are present.
-    validateRequestData({ requestData, requestDataSchema, applicationContext });
+    validateRequestData({ data: requestData, dataSchema, applicationContext });
 
     // An interactor knows the data strucures of the entities it mediates and assembles
     // those datastructures as approptiate. It doesn't blindly pass them what it receives from its caller.
@@ -36,7 +36,7 @@ exports.newTodo = async ({
 
     // The interactor doesn't know the details of what constitutes valid entitiy data. It relies
     // on entities for that validation.
-    const newTodo = new Todo({ rawTodo, applicationContext });
+    const newTodo = new NewTodo({ rawTodo, applicationContext });
 
     // Once the entities have done thier work, if the results need to be persisted, the interactor
     // extracts entity data and assebles data records that is passes to the persistencd gateway.

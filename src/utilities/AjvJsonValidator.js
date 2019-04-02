@@ -8,7 +8,10 @@ function validateJson(data, schema) {
     require('ajv-errors')(ajv);
     var validate = ajv.compile(schema);
     var valid = validate(data);
-    if (!valid) return validate.errors;
+    if (!valid) {
+        console.log(validate.errors);
+        return validate.errors;
+    }
 }
 
 module.exports = { validateJson };
