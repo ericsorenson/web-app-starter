@@ -22,4 +22,15 @@ function createMockApplicationContext(options) {
     };
 }
 
-module.exports = { createMockApplicationContext };
+function createSchemaValidationApplicationContext() {
+    const { validateJson } = require('./AjvJsonValidator');
+    return createMockApplicationContext({
+        getJsonValidator: () => {
+            return {
+                validateJson,
+            };
+        },
+    })
+}
+
+module.exports = { createMockApplicationContext, createSchemaValidationApplicationContext };

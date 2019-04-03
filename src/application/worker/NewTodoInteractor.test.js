@@ -1,19 +1,13 @@
 const assert = require('assert');
-const { createMockApplicationContext } = require('../../utilities/TestUtils');
+const { createMockApplicationContext, createSchemaValidationApplicationContext } = require('../../utilities/TestUtils');
 const { newTodo } = require('./NewTodoInteractor');
 
 describe('new valid Todo', () => {
 
     it('should reject requests with missing description in the requestData', async () => {
-        const { validateJson } = require('../../utilities/AjvJsonValidator');
-        const mockApplicationContext = createMockApplicationContext({
-            getJsonValidator: () => {
-                return {
-                    validateJson,
-                };
-            },
-        })
+        const mockApplicationContext = createSchemaValidationApplicationContext();
         const testResponseCallback = (_response) => { }
+        
         try {
             await newTodo({
                 requestData: {
@@ -27,15 +21,9 @@ describe('new valid Todo', () => {
     });
 
     it('should accept well formed and complete requests', async () => {
-        const { validateJson } = require('../../utilities/AjvJsonValidator');
-        const mockApplicationContext = createMockApplicationContext({
-            getJsonValidator: () => {
-                return {
-                    validateJson,
-                };
-            },
-        })
+        const mockApplicationContext = createSchemaValidationApplicationContext();
         const testResponseCallback = (_response) => { }
+        
         try {
             await newTodo({
                 requestData: {
@@ -45,7 +33,6 @@ describe('new valid Todo', () => {
                 applicationContext: mockApplicationContext,
             });
         } catch (e) {
-            console.log(JSON.stringify(e.message));
             assert.fail("should not have thrown an exception");
         };
     });
