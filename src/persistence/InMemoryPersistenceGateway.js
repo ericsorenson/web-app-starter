@@ -1,14 +1,14 @@
 let todos = [];
-const readAllTodos = function(applicationContext) {
-    return todos;
+const readAllTodos = function() {
+  return todos;
 };
 
-const deleteAllTodos = function(applicationContext) {
-    todos = [];
+const deleteAllTodos = function() {
+  todos = [];
 };
 
-const createTodo = function({ todoData, applicationContext }) {
-    todos.push(todoData);
+const createTodo = function({ todoData }) {
+  todos.push(todoData);
 };
 
 module.exports = { readAllTodos, deleteAllTodos, createTodo };
