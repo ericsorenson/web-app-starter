@@ -1,5 +1,5 @@
 const uuidv4 = require('uuid/v4');
-const { validateJson } = require('../utilities/AjvJsonValidator');
+const { validateJson } = require('../../utilities/AjvJsonValidator');
 const {
   readAllTodos,
   deleteAllTodos,
