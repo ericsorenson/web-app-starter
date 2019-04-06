@@ -17,6 +17,7 @@ module.exports = {
     'jest/globals': true,
     browser: true,
     node: true,
+    es6: true,
   },
   parser: 'babel-eslint',
   parserOptions: {
