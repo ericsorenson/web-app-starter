@@ -1,36 +1,13 @@
 import { state } from 'cerebral';
-// import the resopnseCallback
 
-const responseCallback = response => {
-  console.log(response);
-};
+export const newTodoAction = async ({ applicationContext, store, props }) => {
+  const responseCallback = response => {
+    store.set(state.todo, response);
+  };
 
-const promiseWrapper = (requestData, responseCallback, applicationContext) => {
-  return new Promise(function(resolve) {
-    const callback = () => {
-      resolve(responseCallback());
-    };
-    applicationContext.getUseCases().createWorkItem({
-      requestData,
-      callback,
-      applicationContext,
-    });
-  });
-};
-
-export const newTodoAction = async ({ applicationContext, get }) => {
-  const requestData = { description: get(state.todoform.todo.description) };
-
-  // applicationContext.getUseCases().createWorkItem({
-  //   requestData,
-  //   responseCallback,
-  //   applicationContext,
-  // });
-
-  const results = await promiseWrapper(
-    requestData,
+  applicationContext.getUseCases().newTodo({
+    requestData: props.requestData,
     responseCallback,
     applicationContext,
-  );
-  return results;
+  });
 };

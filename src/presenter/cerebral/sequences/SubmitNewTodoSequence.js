@@ -1,10 +1,10 @@
 import { newTodoAction } from '../actions/NewTodoAction';
 
-export const setNewTotoSequence = [
-  showProgressIndicatorAction,
+export const SubmitNewTodoSequence = [
+  // showProgressIndicatorAction,
   newTodoAction,
-  getTodosAction,
-  setTodosPresenter,
-  resetTodoFormAction,
-  hideProcessIndicator,
+  // getTodosAction,
+  // setTodosPresenter,
+  // resetTodoFormAction,
+  // hideProcessIndicator,
 ];
