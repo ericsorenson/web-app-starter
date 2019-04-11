@@ -1,4 +1,4 @@
-import { equal, deepStrictEqual } from 'assert';
+import { assert } from 'assert';
 import { CerebralTest } from 'cerebral/test';
 import { createMockApplicationContext } from '../../../utilities/TestUtils';
 import { presenter } from '../presenter';
@@ -8,23 +8,20 @@ describe('NewTodoSequence', () => {
     const mockApplicationContext = createMockApplicationContext({
       getUseCases: () => ({
         newTodo: request => {
-          equal(request.applicationContext, mockApplicationContext);
-          deepStrictEqual(request.requestData, {
+          expect(request.requestData).toMatchObject({
             description: 'Make a sammich.',
           });
-          request.responseCallback(responseData);
+          expect(request.responseCallback).toBeDefined();
+          expect(request.applicationContext).toBeDefined();
         },
       }),
     });
 
     presenter.providers.applicationContext = mockApplicationContext;
     const test = CerebralTest(presenter);
+    test.setState("todoPage.todoForm.description", 'Make a sammich.');
 
-    await test.runSequence('SubmitNewTodoSequence', {
-      requestData: {
-        description: 'Make a sammich.',
-      },
-    });
+    await test.runSequence('SubmitNewTodoSequence');
   });
 
   it('should add the interactor response to cerebral state', async () => {
@@ -38,14 +35,12 @@ describe('NewTodoSequence', () => {
 
     presenter.providers.applicationContext = mockApplicationContext;
     const test = CerebralTest(presenter);
+    test.setState("todoPage.todoForm.description", 'Make a sammich.');
 
-    await test.runSequence('SubmitNewTodoSequence', {
-      requestData: {
-        description: 'Make a sammich.',
-      },
-    });
+    await test.runSequence('SubmitNewTodoSequence');
 
-    expect(test.getState('todo')).toMatchObject(responseData);
+    console.log(test.getState('todoPage.todos'));
+    expect(test.getState('todoPage.todos')).toMatchObject(responseData.data);
   });
 });
 

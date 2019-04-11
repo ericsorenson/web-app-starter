@@ -9,7 +9,7 @@ const { NewTodo } = require('../../domain/worker/NewTodo');
  * @param responseCallback
  * @returns {Promise<*>}
  */
-exports.newTodo = async ({
+const newTodo = async ({
   requestData,
   responseCallback,
   applicationContext,
@@ -51,3 +51,6 @@ exports.newTodo = async ({
   // function signature should be at the same semantic level as the interactor.
   responseCallback({ status: 'success', data: todoData });
 };
+
+module.exports = { newTodo };
+

@@ -6,7 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Home } from './views/Home';
-import { presenter } from './presenter/presenter';
+import { presenter } from './presenter/cerebral/presenter';
 
 const cerebralApp = App(presenter);
 

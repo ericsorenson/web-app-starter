@@ -1,3 +1,5 @@
+
+const { newTodo } = require('../../application/worker/NewTodoInteractor');
 const uuidv4 = require('uuid/v4');
 const { validateJson } = require('../../utilities/AjvJsonValidator');
 const {
@@ -24,6 +26,11 @@ const applicationContext = {
       readAllTodos,
       deleteAllTodos,
     };
+  },
+  getUseCases: () => {
+    return {
+      newTodo,
+    }
   },
 };
 
