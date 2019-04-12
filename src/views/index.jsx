@@ -5,8 +5,8 @@ import App from 'cerebral';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Home } from './views/Home';
-import { presenter } from './presenter/cerebral/presenter';
+import { Home } from './Home';
+import { presenter } from '../presenter/cerebral/presenter';
 
 const cerebralApp = App(presenter);
 

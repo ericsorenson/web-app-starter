@@ -51,11 +51,14 @@
     "pug": "^2.0.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-with-addons": "^0.0.1",
     "sass": "^1.17.4",
     "stylelint": "^9.10.1",
     "stylelint-config-idiomatic-order": "^6.2.0",
     "stylelint-config-standard": "^18.2.0",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "todomvc-app-css": "^2.0.0",
+    "todomvc-common": "^1.0.1"
   },
   "devDependencies": {
     "prettier": "1.16.4"
