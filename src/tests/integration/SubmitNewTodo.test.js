@@ -7,7 +7,7 @@ describe('New Todo user interaction', () => {
     presenter.providers.applicationContext = applicationContext;
     const test = CerebralTest(presenter);
 
-    test.setState("todoPage.todoForm.description", 'Make a sammich.');
+    test.setState('todoPage.todoForm.description', 'Make a sammich.');
     await test.runSequence('SubmitNewTodoSequence');
     expect(test.getState('todoPage.todos')).toMatchObject({
       description: 'Make a sammich.',

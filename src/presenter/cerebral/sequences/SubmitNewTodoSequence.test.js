@@ -1,4 +1,3 @@
-import { assert } from 'assert';
 import { CerebralTest } from 'cerebral/test';
 import { createMockApplicationContext } from '../../../utilities/TestUtils';
 import { presenter } from '../presenter';
@@ -19,7 +18,7 @@ describe('NewTodoSequence', () => {
 
     presenter.providers.applicationContext = mockApplicationContext;
     const test = CerebralTest(presenter);
-    test.setState("todoPage.todoForm.description", 'Make a sammich.');
+    test.setState('todoPage.todoForm.description', 'Make a sammich.');
 
     await test.runSequence('SubmitNewTodoSequence');
   });
@@ -35,11 +34,10 @@ describe('NewTodoSequence', () => {
 
     presenter.providers.applicationContext = mockApplicationContext;
     const test = CerebralTest(presenter);
-    test.setState("todoPage.todoForm.description", 'Make a sammich.');
+    test.setState('todoPage.todoForm.description', 'Make a sammich.');
 
     await test.runSequence('SubmitNewTodoSequence');
 
-    console.log(test.getState('todoPage.todos'));
     expect(test.getState('todoPage.todos')).toMatchObject(responseData.data);
   });
 });
@@ -51,4 +49,4 @@ const responseData = {
     createdAt: 1554070560001,
     todoId: '413f62ce-d7c8-446e-aeda-14a2a625a626',
   },
-}
+};

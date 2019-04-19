@@ -53,4 +53,3 @@ const newTodo = async ({
 };
 
 module.exports = { newTodo };
-
