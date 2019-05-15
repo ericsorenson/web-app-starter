@@ -5,8 +5,11 @@ import App from 'cerebral';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Home } from './views/Home';
-import { presenter } from './presenter/presenter';
+import { Home } from './Home';
+import { presenter } from '../presenter/cerebral/presenter';
+import { applicationContext } from '../environments/dev/ApplicationContext';
+
+presenter.providers.applicationContext = applicationContext;
 
 const cerebralApp = App(presenter);
 
