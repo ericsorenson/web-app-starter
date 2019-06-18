@@ -9,8 +9,10 @@ describe('New Todo user interaction', () => {
 
     test.setState('todoPage.todoForm.description', 'Make a sammich.');
     await test.runSequence('SubmitNewTodoSequence');
-    expect(test.getState('todoPage.todos')).toMatchObject({
-      description: 'Make a sammich.',
-    });
+    expect(test.getState('todoPage.todos')).toMatchObject([
+      { description: 'make lunch' },
+      { description: 'make dinner' },
+      { description: 'Make a sammich.' },
+    ]);
   });
 });
