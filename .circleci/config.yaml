@@ -1,0 +1,11 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:10.16
+    steps:
+      - checkout
+      - run:
+          command: npm i
+command: npm run lint && npm test;
