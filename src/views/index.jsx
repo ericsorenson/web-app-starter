@@ -1,6 +1,4 @@
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
-
+import '@babel/polyfill';
 import { Container } from '@cerebral/react';
 import App from 'cerebral';
 import React from 'react';
