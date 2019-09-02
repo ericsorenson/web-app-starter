@@ -15,7 +15,9 @@
     "lint": "eslint ./src && eslint ./src/**/*.jsx && stylelint ./src/**/*.scss",
     "lint:fix": "eslint --fix ./src && eslint --fix ./src/**/*.jsx && stylelint --fix ./src/**/*.scss",
     "start": "parcel src/index.pug --port 5678",
-    "build": "parcel build src/index.pug"
+    "build": "parcel build src/index.pug",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -61,6 +63,8 @@
     "stylelint-config-standard": "^18.3.0",
     "todomvc-app-css": "^2.0.0",
     "todomvc-common": "^1.0.1",
-    "uuid": "^3.3.2"
-  }
+    "uuid": "^3.3.2",
+    "snyk": "^1.222.1"
+  },
+  "snyk": true
 }
